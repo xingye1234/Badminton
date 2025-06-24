@@ -1,0 +1,40 @@
+name: React pages
+on:
+  push:
+    branches: [main]
+# 执行的一项或多项任务
+jobs:
+  build-and-deploy:
+    # 运行在虚拟机环境ubuntu-latest
+    # https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on: ubuntu-latest
+    steps:
+      - name: 获取源码   ️
+        uses: actions/checkout@v3
+      - name: Node环境版本  ️
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: 安装 Pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: true
+      - name: 安装依赖 ⚙️
+        run: pnpm install
+      - name: 打包  ️
+        run: |
+          npm run build
+      - name: 部署
+        # JamesIves/github-pages-deploy-action@v4  peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # github_token: ${{ secrets.ACCESS_TOKEN }}
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          # personal_token: ${{ secrets.ACCESS_TOKEN }}
+          # publish_dir: ./out
+          # publish_branch: wkx-pages
+          branch: wkx-pages
+          folder: out
+          clean: true
