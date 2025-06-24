@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
-const paths = process.env.NODE_ENV === 'production' ? '/Badminton' : ''
+const isProd = process.env.NODE_ENV === 'production'
+
 const nextConfig = {
-  basePath: paths,
-  assetPrefix: paths+'/',
+  basePath: isProd ? '/Badminton' : '',
+  assetPrefix: isProd ? '/Badminton/' : '',
   eslint: {
     ignoreDuringBuilds: true,
   },
