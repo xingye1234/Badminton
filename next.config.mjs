@@ -2,8 +2,8 @@
 const isProd = process.env.NODE_ENV === 'production'
 
 const nextConfig = {
-  basePath: isProd ? '/Badminton' : '',
-  assetPrefix: isProd ? '/Badminton/' : '',
+  basePath: isProd ? '/badminton/' : './',
+  assetPrefix: isProd ? '/badminton/' : './',
   eslint: {
     ignoreDuringBuilds: true,
   },
