@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 
-const paths = process.env.NODE_ENV === 'production' ? '/Badminton/' : ''
+const paths = process.env.NODE_ENV === 'production' ? '/Badminton' : ''
 const nextConfig = {
   basePath: paths,
-  assetPrefix: paths,
+  assetPrefix: paths+'/',
   experimental: {
     appDir: true,
   },
